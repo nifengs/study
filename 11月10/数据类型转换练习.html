@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+请输入qq号<input type="text">
+<input type="button" value="判断">
+<script>
+    window.onload=function(){
+        var arr=['100px','abc-6',-98765,34,-2,0,'300',,function(){alert(1);},null,
+        document,[],true,'200px'-30,'23.45元',5,Number('abc'),function(){alert(3);}];
+
+        function one(){
+            for(var i=0;i<arr.length;i++){
+                if(typeof arr[i]=='number'&&arr[i]==arr[i]){//排除NAN
+                    console.log(arr[i])
+                }
+                if(!isNaN(parseInt(arr[i]))){
+
+//                    Math.max(arr[i])
+//                    console.log(arr[i])
+                }
+            }
+//            var oIpn=document.getElementsByTagName('input');
+//            oIpn[1].onclick= function () {
+//                var str=oIpn[0].value;
+//                 var arr=str.split('');
+////               console.log(Math.max.apply(null,arr))
+//                if(str==''){
+//                    alert("你没有输入内容！")
+//                }else{
+//                    if(isNaN(str)){
+//                        alert('你输入的不是数字')
+//                    }else{
+//                        if(arr[0]==0) {
+//                            alert('0不能再第一位的哦')
+//                        }else{
+//                            if(arr.length<=5||arr.length>=10){
+//                            alert("输入的数字必须为5到10位之间！")
+//                            }else{
+//                                alert("恭喜啊！")
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+        }
+    one();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1 div{ width:200px; height:200px; border:1px #000 solid; display:none;}
+.active{ background:red;}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script>
+
+//get() : 把JQ转成原生JS , 默认情况获取的是一个原生的集合，那么可以通过参数来找到集合中的指定项
+
+$(function(){
+	
+	//alert( $('div').get(0).innerHTML );
+	
+	alert( $('div').eq(0).html() );
+	
+});
+
+</script>
+</head>
+
+<body>
+<div>aaaaa</div>
+</body>
+</html>

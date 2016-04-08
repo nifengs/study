@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.js"></script>
+    <style>
+        *{margin:0;padding: 0;}
+
+        .content{position: relative}
+        .box{height: 100px;width: 100px;background: darkgoldenrod;}
+        .bd{width: 1200px;height: 2000px;border: 1px solid darkred;margin:0 auto;}
+        .foot{height: 800px;width: 100%;background: darksalmon;}
+        .fixed{position: fixed;top: 300px;left: 50px;}
+        .absolute{position: absolute;bottom:800px;left: 50px;}
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="bd"></div>
+    <div class="foot"></div>
+    <div class="box fixed"></div>
+</div>
+<script>
+
+    $(function () {
+        var $box = $('.box');
+        var footHight=$('.foot').height();
+        $(window).scroll(function () {
+            var boxHight=$('.box').height();
+            console.log($(document).height()-300-$(document).scrollTop()-boxHight)
+            if (($(document).height()-300-$(document).scrollTop()-boxHight)<=footHight) {
+                $('.box').removeClass('fixed').addClass('absolute');
+            }
+            else {
+                $('.box').removeClass('absolute').addClass('fixed');
+            }
+        });
+
+    })
+</script>
+</body>
+</html>

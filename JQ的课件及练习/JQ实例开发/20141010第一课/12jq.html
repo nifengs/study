@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.11.1.js"></script>
+<script>
+
+$(function(){
+
+	var bBtn = true;
+
+	$('input').click(function(){
+		
+		if(bBtn){
+			$('span').hide();
+			//$('span').css('display','none');
+		}
+		else{
+			$('span').show();
+			//$('div').css('display','inline');
+		}
+		
+		bBtn = !bBtn;
+		
+	});
+	
+
+});
+
+</script>
+</head>
+
+<body>
+<input type="button" value="点击">
+<br>
+<span>span</span>
+<span>span</span>
+<span>span</span>
+</body>
+</html>

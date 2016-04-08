@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度评分</title>
+    <style>
+        *{margin:0px;padding:0px;}
+        ul{display: inline-block;}
+        ul li{list-style: none;height:19px;width: 19px;}
+        li{background: url("http://static.wenku.bdimg.com/static/wkview/widget/userEvaluation/big-stars_29169e9.png") no-repeat -39px 0;display: inline-block;}
+        .a{background-position:0px 0px;}
+        .b{background-position:-19px 0px;}
+    </style>
+</head>
+<body>
+    <span>总评分</span>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span id="pingjia">11</span>
+<script>
+    window.onload=function(){
+        var oUl=document.getElementsByName('ul');
+        var oLi=document.getElementsByTagName('li');
+        var oPingjia=document.getElementById('pingjia');
+        var arr=['差','一般','好','很好','非常好'];
+        var oimglen=oLi.length;
+        for(var i=0;i<oimglen;i++){
+            oLi[i].index=i;
+            oLi[i].onmouseover=function(){
+                // 先清空被点击的样式
+                 for(var j=0;j<oimglen;j++){
+                    oLi[j].className='';
+                }
+                // 然后对现在选取滑过的星星给予样式
+//                alert(this.index)
+                for(var k=0;k<=this.index;k++){
+                    if(this.index<=1){
+                        oLi[k].className='b';
+                    }else{
+                        oLi[k].className='a';
+                    }
+                    oPingjia.innerHTML=arr[this.index];
+
+                    oLi[k].onmouseout=function(){
+                        oPingjia.innerHTML ="";
+                        oLi[k].className='';
+                    }
+                }
+
+            }
+
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        var json = { name : 'leo', age : 32 }; //json的数据格式
+        alert(json.name) //访问json
+        //json类似数组这样的形式-----------------
+        var arrUrl = [ 'img/1.png', 'img/2.png', 'img/3.png', 'img/4.png' ];
+        var arrText = [ '小宠物', '图片二', '图片三', '面具' ];
+
+        var imgData = {
+            url : [ 'img/1.png', 'img/2.png', 'img/3.png', 'img/4.png' ],
+            text : [ '小宠物', '图片二', '图片三', '面具' ]
+        };
+         alert( imgData.url[2] )
+        //-------------------------------------
+        //json语法格式
+        var json2 = { name : 'miaov' };
+        var json2 = { 'name' : 'miaov' };//推荐的形式、安全 方便
+        //json访问方式
+        alert( json2.name );//.操作访问
+        alert( json2['name'] );
+        //修改里面的内容
+        json2.name = '妙味';
+        json2['name'] = 'miaov';
+        //json里面可以包含 数字、字符串、数组....
+        //数组里也可以包json
+        var arr = [ { 'name' : 'TM', 'age' : 23 }, { 'name' : 'leo', 'age' : 32 } ];
+        //访问json
+        alert( arr[0].name + '今年有' + arr[1]['age']  );
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Web Design</title>
+  <style type="text/css" media="screen">
+    @import url(styles/layout.css);
+    #slide{
+      width: 100px;
+      height: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    #prew{
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <h1>Web Design</h1>
+  <p>These are the things you should know.</p>
+  <ol id="linklist">
+    <li>
+      <a href="structure.html">Structure</a>
+    </li>
+    <li>
+      <a href="presentation.html">Presentation</a>
+    </li>
+    <li>
+      <a href="behavior.html">Behavior</a>
+    </li>
+  </ol>
+<script>
+  window.onload= function () {
+    //DOM没有提供insertAfter()方法
+    function insertAfter(newElement, targetElement){
+      var parent = targetElement.parentNode;
+      if (parent.lastChild == targetElement) {
+// 如果最后的节点是目标元素，则直接添加。因为默认是最后
+        parent.appendChild(newElement);
+      }
+      else {
+        parent.insertBefore(newElement, targetElement.nextSibling);
+//如果不是，则插入在目标元素的下一个兄弟节点 的前面。也就是目标元素的后面
+      }
+    }
+
+    var olinklist=document.getElementById('linklist');
+    var oDiv=document.createElement('div');
+    oDiv.setAttribute("id","slide");
+    var oImg=document.createElement('img');
+    oImg.setAttribute("src","topics.gif");
+    oImg.setAttribute("alt","一个");
+    oImg.setAttribute("id","prew");
+    oDiv.appendChild(oImg);
+    insertAfter(oDiv,olinklist);
+
+    var oA=olinklist.document.getElementsByTagName("a");
+    for(var i=0;i<oA.length;i++){
+      oA[i].onmouseover=function(){
+        
+      }
+    }
+  }
+</script>
+</body>
+</html>

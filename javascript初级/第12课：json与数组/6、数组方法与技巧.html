@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //1数组的添加
+        var arr = [ 1,2,3 ];
+         alert( arr.push( 'abc' ) );    //往数组的最后一位添加 返回值是数组新的长度
+        //往数组前面添加
+        arr.unshift( 0 )
+//        alert( arr.unshift( 0 ) ); //返回值也是数组新的长度4 IE 6  7 不支持 unshift 返回值
+
+        //2数组的删除
+        var arr = [ 'TM', '钟毅', '张森', '杜鹏', 'Leo' ];
+//      alert( arr.pop() );         //删除最后一个
+//      alert( arr );
+        alert( arr.shift() );          //删除最前面的一个
+        // arr.shift();
+        alert( arr );
+
+        //3数组排队走
+        // arr.unshift(arr.pop());  //把最后一个扔到开头
+        // arr.unshift(arr.pop());
+
+        arr.push(arr.shift())      //把最前面的扔到后面
+
+        // alert( arr );
+
+        //4、数组的删除、替换、添加
+
+        arr.splice( 0, 2) //从第0位开始删除2个 返回值是删除的两个值
+        arr.splice( 0, 1,'mm') //mm替换了第一个 返回值是被替换的值
+        arr.splice( 1, 0, '钟毅媳妇儿~', '钟毅媳妇们~' ) //往第一个位置塞
+
+        //5、数组去重
+        var arr = [ 1,2,2,4,2 ];
+
+        for ( var i=0; i<arr.length; i++ ) {
+            for ( var j=i+1; j<arr.length; j++ ) {
+                if ( arr[i] == arr[j] ) { //第一个与第二个比较，相等就干掉一个
+                    arr.splice( j, 1 );
+                    j--;
+                }
+            }
+        }
+        alert( arr );
+        //6、数组排序
+        var arr = [ 'c', 'd', 'a', 'e' ];
+        arr.sort(); //按照字符的编码排序
+        var arr2 = [ 4,3,5,5,76,2,0,8 ];
+        arr2.sort();//先按字符串的方式比较'76'与8比较，7<8 需设置个函数
+        arr2.sort(function ( a, b ) {
+            return a - b; //由小到大排序 如果是整数就换下位置
+        });
+        // alert( arr2 );
+
+        //字符串式比较
+        var arrWidth = [ '345px', '23px', '10px', '1000px' ];
+        arrWidth.sort(function ( a, b ) {
+            return parseInt(a) - parseInt(b);
+        });
+        alert( arrWidth );
+        //7、数组随机排序
+        var arr = [ 1,2,3,4,5,6,7,8 ];
+        arr.sort(function ( a, b ) {
+            return Math.random() - 0.5;//正值交换负值
+        });
+        alert( arr );
+
+        // alert( Math.random() );//返回0-1之间的数字
+
+    </script>
+</body>
+</html>

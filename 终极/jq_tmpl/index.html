@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../jquery.js"></script>
+    <script src="../../jquery.tmpl.js"></script>
+
+</head>
+<body>
+<div id="container"></div>
+<script type="text/x-jquery-tmpl" id="testTemplate">
+    <div>
+     ${name} <br/>
+    {{HTML name}} <br/>
+    {{= name}} <br/>
+    </div>
+</script>
+
+</body>
+<script >
+    $(function(){
+        var data={
+            name:'waaa'
+        };
+        $('#testTemplate').tmpl(data).appendTo('#container');
+    })
+</script>
+</html>

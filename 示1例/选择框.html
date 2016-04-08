@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{list-style: none}
+        .box{margin: 200px 300px;border: 1px solid green;height: 500px;}
+        .ipt{width: 300px;min-height:28px;margin: 0 auto;margin-top: 50px;max-width: 500px;border: 1px solid green;}
+
+        .sel{width: 300px;max-height: 300px;border: 1px solid green;margin:0 auto;border-top: 0;border-bottom: 0;overflow-y: scroll;display:none}
+        .sel ul li{border-bottom: 1px solid green;height: 24px;line-height: 24px;text-align: center;cursor: pointer;}
+		.current{background:green;}
+        .ipt span{margin: 5px 3px;padding:0 5px;display: inline-block;background: green;
+            color: #fff;}
+    </style>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+<div class="box">
+    <div class="ipt">
+    </div>
+    <div class="sel">
+        <ul>
+            <li class="current">河南</li>
+            <li>山东</li>
+            <li>上海</li>
+            <li>广东</li>
+            <li>江苏</li>
+            <li>北京</li>
+            <li>天津</li>
+            <li>山东</li>
+            <li>上海</li>
+
+        </ul>
+    </div>
+</div>
+<script>
+	$(function(){
+		$('.ipt').on('click',function(){
+            $('.sel').show();
+        })
+        $('.sel li').on('click',function(){
+            $(this).hide();
+            var value=$(this).text();
+            var out = '<span>'+value+'</span>';
+           $('.ipt').append(out);
+
+    })
+        //对动态添加的元素添加事件-删除
+        $('.ipt').on('click','span',function() {
+            $(this).remove();
+            var value=$(this).text();
+            var livalue=$('.sel li').each().text();
+            alert(livalue)
+            if(value==livalue){
+                $('.sel li').show();
+            }
+        })
+	})
+</script>
+</body>
+</html>

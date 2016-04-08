@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="text" > text here</div>
+    <div id="html"> html here</div>
+    <div id="xml"> xml here
+    </div>
+    <input placeholder="ddd">
+    <!-- and that's about it -->
+<script>
+    window.onload= function () {
+//        var textNod=document.createTextNode('打的');
+//        var oP=document.createElement('p');
+//        oP.appendChild(textNod);
+//        document.body.appendChild(oP);
+//        //克隆节点
+//        var wl=document.getElementsByTagName('p')[1];
+//        document.body.appendChild(wl.cloneNode(true));
+//        textNod.insertBefore(wl);
+//        function parahade(e){
+//            alert('clicked paragrap')
+//            e.stopPropagation();
+//        }
+//        var mypara=document.getElementById('closer');
+//        mypara.addEventListener('click', parahade,false);
+//        document.body.addEventListener('click', function () {
+//            alert('clicked body')
+//        },false)
+//        document.addEventListener('click', function () {
+//            alert('clicked document')
+//        },false)
+//        window.addEventListener('click', function () {
+//            alert('clicked window')
+//        },false)
+//        //防止默认行为
+//        var all_links=document.getElementsByTagName('a');
+//        for (var i=0;i<all_links.length;i++){
+//            all_links[i].addEventListener(
+//                    'click',
+//                    function (e) {
+//                        if(!confirm('你想点这个吗？')){
+//                            e.preventDefault();
+//                        }
+//                    },
+//                    false;
+//            )
+//        }
+//        var xhr=new XMLHttpRequest();
+//        xhr.onreadystatechange=myCallback;
+//        xhr.open('GET','some.txt',true);
+//        xhr.send('');
+//
+//        function myCallback(){
+//            if(xhr.readyState<4){
+//                return;
+//            }
+//            if(xhr.status!==200){
+//                alert("error!");
+//                return;
+//            }
+//            alert(xhr.responseText);
+//        }
+//        var xhr=new XMLHttpRequest();
+//        xhr.onreadystatechange= (function (myxhr) {
+//            return function () {
+//                myCallback(myxhr);
+//            };
+//        })(xhr);
+//        xhr.open('GET','some.txt',true);
+//        xhr.send('');
+        function request(url,callback){
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=(function (myxhr) {
+                return function () {
+                    if(myxhr.readyState===4&&myxhr.status===200){
+                        callback(myxhr);
+                    }
+                }
+            }(xhr));
+            xhr.open('GET',url,true);
+            xhr.send('');
+        }
+        request(
+                'http://www.baidu.com'
+        )
+    }
+</script>
+</body>
+</html>

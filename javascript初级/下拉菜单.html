@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0px;padding: 0;}
+        .clearfix:after{content: '';display: block;height: 0;visibility: hidden;clear: both}
+        ul li{list-style: none}
+        .lsit{margin: 20px auto 0;background: #000;width: 700px;}
+        .lsit li{list-style: none;float: left;width: 100px;height: 30px;color: #fff;line-height: 30px;text-align: center;
+            border-right: 1px solid #ccc;box-sizing: border-box; cursor: pointer;
+        }
+        .show{margin: 0 auto;width: 700px;background: indianred;}
+        .show ul{display:none;}
+        .show li{float: left;height: 30px;line-height: 30px;width:100px;box-sizing: border-box;text-align: center}
+        .show li:hover{background: darkorange}
+    </style>
+</head>
+<body>
+<ul class="lsit clearfix" id="list">
+    <li>首页</li>
+    <li>服饰</li>
+    <li>美容</li>
+    <li>偶像</li>
+    <li>乐活</li>
+    <li>男士</li>
+    <li>健康</li>
+</ul>
+<div id="show" class="show clearfix">
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+    <ul>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+    </ul>
+    <ul>
+        <li>3</li>
+        <li>3</li>
+        <li>3</li>
+        <li>3</li>
+        <li>3</li>
+        <li>3</li>
+        <li>3</li>
+    </ul>
+    <ul>
+        <li>4</li>
+        <li>4</li>
+        <li>4</li>
+        <li>4</li>
+        <li>4</li>
+        <li>4</li>
+        <li>4</li>
+    </ul>
+    <ul>
+        <li>5</li>
+        <li>5</li>
+        <li>5</li>
+        <li>5</li>
+        <li>5</li>
+        <li>5</li>
+        <li>5</li>
+    </ul>
+    <ul>
+        <li>6</li>
+        <li>6</li>
+        <li>6</li>
+        <li>6</li>
+        <li>6</li>
+        <li>6</li>
+        <li>6</li>
+    </ul>
+    <ul>
+        <li>7</li>
+        <li>7</li>
+        <li>7</li>
+        <li>7</li>
+        <li>7</li>
+        <li>7</li>
+        <li>7</li>
+    </ul>
+</div>
+<script>
+    window.onload=function(){
+        var oList=document.getElementById('list');
+        var oShow=document.getElementById('show');
+        var oUl=oShow.getElementsByTagName('ul');
+        var oLi=oList.getElementsByTagName('li');
+        for(var i=0;i<oLi.length;i++){
+             oLi[i].index=i;
+
+            oLi[i].onmouseover=function(){
+                this.style.background='red';
+                oUl[this.index].style.display='block';
+
+            }
+            oLi[i].onmouseout=function(){
+                this.style.background='#000';
+                oUl[this.index].style.display='none';
+            }
+            oUl[i].onmouseover=function(){
+                this.style.display='block';
+            }
+            oUl[i].onmouseout=function(){
+                this.style.display='none';
+            }
+        }
+    }
+</script>
+</body>
+</html>

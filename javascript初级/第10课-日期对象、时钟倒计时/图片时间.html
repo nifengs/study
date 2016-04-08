@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <p id="time" style="font-size:60px;"></p>
+    <img src="img/0.JPG" />
+    <img src="img/0.JPG" />
+    <img src="img/0.JPG" />
+    <img src="img/0.JPG" />
+    <img src="img/0.JPG" />
+    <img src="img/0.JPG" />
+<script>
+    window.onload= function () {
+        var oP=document.getElementById('time');
+        var aimg=document.getElementsByTagName('img');
+        function fnTime(){
+            var myDate=new Date();
+            var myYear=myDate.getFullYear(); //年
+            var myMonth=myDate.getMonth()+1; //月
+            var myDat=myDate.getDate();  //日
+            var myWeek=myDate.getDay(); //星期
+            var myHours=myDate.getHours(); //小时
+            var myMin=myDate.getMinutes(); //分
+            var mysec=myDate.getSeconds(); //秒
+
+            var str=toTwo(myHours)+''+toTwo(myMin)+''+toTwo(mysec);
+            oP.innerHTML=str;
+            for(var i=0;i<aimg.length;i++){
+                aimg[i].src='img/'+str.charAt(i)+'.JPG';
+            }
+        }
+        fnTime();
+        setInterval(fnTime,1000);
+        //当到0 的时候 时分秒会变成单个0 ，下面处理一下
+        function toTwo(n){
+            if(n<10){
+                return '0'+n;
+            }else{
+                return n;
+            }
+            //也可以写成
+            //return n < 10 ?  '0' + n : '' + n;
+        }
+    }
+</script>
+</body>
+</html>

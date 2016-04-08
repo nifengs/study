@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.js"></script>
+    <style>
+        *{margin:0;padding: 0;}
+        .content{position: relative}
+        .box{height: 100px;width: 100px;background: darkgoldenrod;}
+        .bd{width: 1200px;height: 2000px;border: 1px solid darkred;margin:0 auto;}
+        .foot{height: 800px;width: 100%;background: darksalmon;}
+    </style>
+</head>
+<body>
+<div class="content">
+    <div class="bd"></div>
+    <div class="foot"></div>
+    <div class="box"></div>
+</div>
+<script type="text/javascript">
+           $(function () {
+           function location($box,$foot,aLeft,aBottom,fLeft,fTop) {
+
+               var footHight=$foot.height();
+
+               $(window).scroll(function () {
+                   var boxHight=$box.height();
+
+                   if (($(document).height()-fTop-$(document).scrollTop()-boxHight)<=footHight) {
+                       $box.attr('style','');
+                       $box.css({
+                           'position':'absolute',
+                           'left':aLeft+'px',
+                           'bottom':aBottom+'px'
+                       })
+                   }
+                   else {
+                       $box.attr('style','');
+                       $box.css({
+                           'position':'fixed',
+                           'left':fLeft+'px',
+                           'top':fTop+'px'
+                       })
+                   }
+               });
+           }
+
+               location($('.box'),$('.foot'),50,800,50,300);
+           })
+</script>
+</body>
+</html>

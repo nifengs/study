@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.11.1.js"></script>
+<script>
+
+$(function(){
+	
+	//$('ul').children('div').css('background','red');
+	
+	//$('ul').children().css('background','red');
+	
+	//$('ul').find('p').css('background','red');  //尽量用这种方式，性能会更高一些
+	
+	$('ul p').css('background','red');
+	
+});
+
+</script>
+</head>
+
+<body>
+<ul>
+	<li>
+    	111
+        <p>pppppp</p>
+    </li>
+    <li>111</li>
+    <li>111</li>
+    <li>111</li>
+    <div>div</div>
+</ul>
+</body>
+</html>

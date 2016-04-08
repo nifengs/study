@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input id="text1" type="text" />
+    <select id="select1">
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="杭州">杭州</option>
+    </select>
+    <input id="btn1" type="button" value="按钮" />
+    <img id="img1" src="img/1.jpg" width="200" />
+
+    <script>
+        /*
+         HTML 的属性操作：读、写
+         属性名：
+         属性值：
+
+         读操作：获取、找到
+         元素.属性名
+
+         写操作：“添加”、替换、修改
+         元素.属性名 = 新的值
+
+         */
+window.onload= function () {
+    var oText1=document.getElementById('text1');
+    var oBtn1=document.getElementById('btn1');
+    var oSelect = document.getElementById('select1');
+
+//    oBtn1.onclick=function(){
+//        alert(oText1.value+'在'+oSelect.value);
+//    }
+//    oBtn1.onclick=function(){
+//       oText1.value=oSelect.value;
+//    }
+    oBtn1.onclick = function (){  //可以给img的src赋值，改变图片显示
+        oImg.src = oText.value;
+    };
+
+}
+    </script>
+</body>
+</html>

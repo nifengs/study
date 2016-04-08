@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<ul id="list">
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>12.5元</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>10.5元</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>8.5元</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>8元</em>
+        小计：<span>0元</span>
+    </li>
+    <li>
+        <input type="button" value="-"/>
+        <strong>0</strong>
+        <input type="button" value="+"/>
+        单价：<em>14.5元</em>
+        小计：<span>0元</span>
+    </li>
+</ul>
+
+<div id="end">
+    商品合计共:<i>0</i> 件，共花费了:<i>0</i> 元<br/>
+    其中最贵的商品单价是：<i>0</i> 元
+</div>
+<script>
+    window.onload=function(){
+        var oUl=document.getElementById('list');
+        var aLi=oUl.getElementsByTagName('li');
+        var oEnd=document.getElementById('end');
+        for( var i=0; i<aLi.length; i++ ){
+            fn1(aLi[i]);
+        }
+        function fn1(oLi){
+            var aBtn=oLi.getElementsByTagName('input');
+            var oI=oEnd.getElementsByTagName('i');
+            var oStrong=oLi.getElementsByTagName('strong')[0];
+            var oEm=oLi.getElementsByTagName('em')[0];
+            var oSpan=oLi.getElementsByTagName('span')[0];
+                var n1=Number(oStrong.innerText)
+                var n2=parseFloat(oEm.innerText)
+
+                aBtn[0].onclick= function () {
+                    n1--;
+                    if(n1<0){
+                        n1=0;
+                    }
+                    oStrong.innerText=n1;
+                    oSpan.innerText=n1*n2+'元';
+                    for(var i=0;i<oLi.length;i++){
+                        oI[0].innerText+=Number(oStrong.innerText);
+                        console.log(oStrong[i].innerText)
+                    }
+
+                };
+                aBtn[1].onclick= function () {
+                    n1++;
+                    oStrong.innerText=n1;
+                    oSpan.innerText=n1*n2+'元';
+
+                };
+
+
+        }
+    }
+</script>
+</body>
+</html>

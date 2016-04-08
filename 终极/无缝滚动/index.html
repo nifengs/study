@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{ margin:0; padding:0;}
+        li{ list-style:none;}
+        #div1{ width:350px; height:60px; border:1px #000000 solid; position:relative; margin:0 auto; overflow:hidden;}
+        #div1 ul{ position:absolute; left:0;}
+        #div1 ul li{ width:80px; height:60px; margin-right:10px; float:left;}
+    </style>
+    <script src="../../jquery.js"></script>
+    <script src="../../move.js"></script>
+</head>
+<body>
+<input type="button" value="切换" id="input1" />
+<div id="div1">
+    <ul id="ul1">
+        <li><img src="img/1.jpg" /></li>
+        <li><img src="img/2.jpg" /></li>
+        <li><img src="img/3.jpg" /></li>
+        <li><img src="img/4.jpg" /></li>
+        <li><img src="img/5.jpg" /></li>
+    </ul>
+</div>
+<script>
+    window.onload= function () {
+    /*    var oP=document.getElementById('input1');
+        var oU=document.getElementById('ul1');
+        var oL=document.getElementsByTagName('li');
+        var oneSize=oL[0].offsetWidth+10;
+        var iNum=1;
+        var btn=true;
+        var timer=null;
+        function totalWidth(){
+            oU.style.width = oneSize*oL.length+'px';
+        }
+        totalWidth();
+        oP.onclick= function () {
+            move();
+        };
+        function move(){
+            if(btn){
+                btn=false;
+                for(var i=0;i<iNum;i++){
+                    var oLi=oL[i].cloneNode(true);
+                    oU.appendChild(oLi);
+                    totalWidth();
+                }
+                startMove(oU,{left : - iNum * oneSize},function(){
+                    for(var i=0;i<iNum;i++){
+                        oU.removeChild(oL[0]);
+                        oU.style.left = 0;
+                    }
+                    btn = true;
+                });
+            }
+        }
+        //自动播放
+        timer=setInterval(function () {
+            move();
+        },2000)*/
+        //jq方法
+        var oneSize=$('#ul1 li').width()+10;
+        var uWidth=oneSize*$('#ul1 li').length;
+        var iNum=4;
+        var btn=true;
+        var oU=document.getElementById('ul1');
+        $('#ul1').css('width',uWidth);
+        function move(){
+                for (var i= 0;i<iNum;i++){
+                    $('#ul1').append($('#ul1 li').eq(i).clone(true));
+                    var uWidth=oneSize*$('#ul1 li').length;
+                    $('#ul1').css('width',uWidth);
+                }
+            startMove(oU,{left : - iNum * oneSize},function(){
+                for(var i=0;i<iNum;i++){
+                    $('#ul1 li').eq(0).remove();
+                    $('#ul1').css('left',0);
+                }
+            });
+        }
+        timer=setInterval(function () {
+                    move();
+                },2000)
+    };
+</script>
+</body>
+</html>

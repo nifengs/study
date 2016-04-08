@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            width: 180px;
+        }
+
+        #img1 {
+            left: 100px;
+        }
+    </style>
+    <script src="../../jquery.js"></script>
+</head>
+<body>
+<img id="img1" src="img/4.jpg"/>
+<img id="img2" src="img/5.jpg"/>
+<script>
+    window.onload = function () {
+        var oImg = document.getElementById('img1');
+        oImg.onmouseover = function () {
+            var This=this;
+            move(This,'left', function () {
+                move(This,'top')
+            })
+        }
+
+        function move(obj,dir,endFn) {
+            var pos = parseInt(getStyle(oImg, dir));
+            var arr = [];
+            var num = 0;
+            var timer = null;
+            for (var i = 20; i > 0; i -= 2) {
+                arr.push(i, -i);
+            }
+            clearInterval(timer);
+            timer = setInterval(function () {
+                obj.style[dir] = pos + arr[num] + 'px';
+                num++;
+                if (num == arr.length) {
+                    clearInterval(timer);
+                    endFn && endFn();
+                }
+            }, 50)
+        }
+
+        function getStyle(obj, attr) {
+            return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+        }
+    };
+</script>
+</body>
+</html>

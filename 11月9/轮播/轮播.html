@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0;list-style: none;text-decoration: none}
+        body{background: #666666}
+        .wrap{margin: 200px auto;width:530px;height: 300px;overflow: hidden;position: relative}
+        ul{width:3200px;height: 300px;}
+        ul li{width: 530px;height: 300px;float: left;}
+        a{position: absolute;top:120px;display:inline-block;width: 50px;height: 50px;border-radius: 50%;background-color: rgba(0,0,0,0.5)}
+        a:hover{background-color: rgba(0,0,0,0.5)}
+       a div{ display: inline-block; width: 20px;height: 20px; font-size: 32px; color: #fff;margin: 6px 19px;}
+        #prev{left: 0px;}
+        #next{right: 0px;}
+    </style>
+</head>
+<body>
+    <div class="wrap" id="wrap">
+        <ul>
+            <li><img src="1.jpg"></li>
+            <li><img src="2.jpg"></li>
+            <li><img src="3.jpg"></li>
+            <li><img src="4.jpg"></li>
+            <a id="prev" href="#"><div>></div></a>
+            <a id="next" href="#"><div><</div></a>
+        </ul>
+    </div>
+<script>
+    window.onload=function(){
+        var oWrap=document.getElementById('wrap');
+        var oImg=document.getElementsByTagName('img');
+        var arrUrl=['1.jpg','2.jpg','3.jpg','4.jpg'];
+        var num=0;
+        function showPic(){
+         oImg.src=arrUrl(num);
+        }
+    }
+</script>
+</body>
+</html>

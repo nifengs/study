@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        b{width:19px;height:19px ;}
+        .star{background: url("http://static.wenku.bdimg.com/static/wkview/widget/userEvaluation/big-stars_29169e9.png") no-repeat -39px 0;display: inline-block;}
+        /*.star-off{background-position:-39px 0}*/
+        .star-on{background-position:-2px 0;}
+        .star-noon{background-position:-21px 0;}
+    </style>
+    <script>
+        window.onload = function(){
+            var aImg = document.getElementsByTagName("b");
+            var pingyu = document.getElementById("pingyu");
+            var imgLen = aImg.length;
+            var arr = ['1','2','3','4','5'];
+            var str="star";
+            var sign = -1;  //记录点击的星星的编号
+
+            function showFn(oIndex,n){
+                pingyu.innerHTML = arr[oIndex];
+                if(oIndex>1){
+                    aImg[n].className= str+" star-on";
+                }else{
+                    aImg[n].className= str+" star-noon";
+                }
+            }
+
+            for(var i=0;i<imgLen;i++){
+                aImg[i].index = i;
+                aImg[i].onmouseover= function(){
+//                    先清空被点击的样式
+                    for(var j=0;j<imgLen;j++){
+                        aImg[j].className= str+" star-off";
+                    }
+//                    然后对现在选取滑过的星星给予样式
+                    for(var k=0;k<=this.index;k++){
+                        showFn(this.index,k);
+//                        鼠标移出，清空所有的样式
+                        aImg[k].onmouseout = function(){
+                            pingyu.innerHTML = "";
+                            for(var j=0;j<this.index+1;j++){
+                                aImg[j].className= str+" star-off";
+                            }
+//                           记录之前选中的星星的位置再赋予样式
+                            if(sign!=-1){
+                                for(var s = 0;s<sign+1;s++){
+                                    showFn(sign,s);
+                                }
+                            }
+                        };
+                    }
+                };
+
+                aImg[i].onclick = function(){
+                    sign = this.index;
+                    for(var k=0;k<=this.index;k++){
+                        showFn(this.index,k);
+                        for(var j=0;j<this.index+1;j++){
+                            aImg[j].onmouseout = null;
+                        }
+                    }
+                };
+            }
+        }
+    </script>
+</head>
+<body>
+<span>总体评价</span>
+    <span>
+        <b class="star star-off"></b>
+        <b class="star star-off"></b>
+        <b class="star star-off"></b>
+        <b class="star star-off"></b>
+        <b class="star star-off"></b>
+    </span>
+<span id="pingyu"></span>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+<div id="div1" class="box">aaaaa</div>
+<script>
+
+/*var oDiv = document.getElementById('div1');
+
+oDiv.onclick = function(){
+	alert( oDiv.innerHTML );
+};*/
+
+var oDiv = $('#div1');
+
+oDiv.click(function(){
+	alert(  oDiv.html()  );
+});
+
+
+---------------
+
+function $(selector){
+}
+function click(fn){
+}
+function html(){
+}
+</script>
+</body>
+</html>

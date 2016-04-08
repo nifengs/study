@@ -1,0 +1,27 @@
+<html>
+<head>
+    <script type="text/javascript">
+        function t(){
+            var nodeli = document.createElement('li');//创建一个li节点
+            var li_text = document.createTextNode('A');//创建一个文本节点
+            nodeli.appendChild(li_text);//将文本节点追加到li节点上
+
+            var nodeul = document.getElementsByTagName('ul')[0];//获取第一个UL节点
+            var nodeli1 = nodeul.getElementsByTagName('li')[2];//获取ul下第3个节点——秋天
+            nodeul.insertBefore(nodeli,nodeli1);//函数insertBefore()表示在哪个节点前添加。第一个参数为要插入的新节点，第二个参数为已有节点
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <ul>
+        <li>春天</li>
+        <li>夏天</li>
+        <li>秋天</li>
+        <li>冬天</li>
+    </ul>
+</div>
+<hr />
+<button onclick="t()" value="">指定位置增加节点</button>
+</body>
+</html>

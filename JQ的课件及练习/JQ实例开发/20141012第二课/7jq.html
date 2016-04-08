@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.11.1.js"></script>
+<script>
+
+
+$(function(){
+	
+	/*var $li = $('<li>hello</li>');
+	
+	$li.appendTo( $('ul') );*/
+	
+	/*$('ul').append('<li class="box">hello</li>');
+	
+	$('.box').click(function(){
+		alert(123);
+	});*/
+	
+	var $li = $('<li class="box">hello</li>');
+	
+	$('ul').append($li);
+	
+	$li.click(function(){
+		alert(123);
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<ul>
+	<li><div>aaa<span>span</span></div></li>
+    <li>aaa<span>span</span></li>
+    <li><div>aaa<span>span</span></div></li>
+    <li><div>aaa<span>span</span></div></li>
+</ul>
+</body>
+</html>

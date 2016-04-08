@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0;padding: 0;}
+        .btn{background: red;padding: 3px 7px;border: 0;color:#fff;}
+        .box{height: 100px;width:100px;background: red;margin: 30px;}
+        .select{width: 300px;height: 200px;border: 10px solid gray;margin:0 auto;display:none;background: #fff;z-index: 999;}
+        em{font-style: normal;}
+        .which_one,.which_two,.which_three{height:30px; margin: 10px 20px;}
+        .which_one span{padding: 3px;}
+        .which_one .Cred{background: red;}
+        .which_one .Cyellow{background: yellowgreen;}
+        .which_one .Cblue{background:dodgerblue;}
+        .reset,.sure{background: darkblue;padding: 3px 7px;border: 0;color: #FFF;}
+        span{padding: 3px;background: gray;color: #fff;font-weight: 600;}
+        .opretion{margin: 10px auto; text-align: center;padding: 5px;cursor: pointer;}
+    </style>
+</head>
+<body>
+    <h2>轻微下面的div设置样式:</h2>
+    <input type="button" value="点击设置" class="btn" id="btn">
+    <div class="box" id="box"></div>
+    <div class="select" id="select">
+        <div class="which_one">
+            <em>请选择背景色：</em>
+            <span class="Cred" id="Cred">红色</span>
+            <span class="Cyellow" id="Cyellow">黄色</span>
+            <span class="Cblue" id="Cblue">蓝色</span>
+        </div>
+        <div class="which_two">
+            <em>请选择宽度px：</em>
+            <span id="wOne">200</span>
+            <span id="wTwo">300</span>
+            <span id="wThree">400</span>
+        </div>
+        <div class="which_three">
+            <em>请选择高度px：</em>
+            <span id="hOne">200</span>
+            <span id="hTwo">300</span>
+            <span id="hThree">400</span>
+        </div>
+       <div class="opretion">
+           <input class="reset" id="reset" type="button" value="恢复">
+           <input class="sure" id="sure" type="button" value="确定">
+       </div>
+    </div>
+<script>
+    window.onload= function () {
+        var obtn=document.getElementById('btn');
+        var oselect=document.getElementById('select');
+        var oCred=document.getElementById('Cred');
+        var oCyellow=document.getElementById('Cyellow');
+        var oCblue=document.getElementById('Cblue');
+        var obox=document.getElementById('box');
+        var owOne=document.getElementById('wOne');
+        var owTwo=document.getElementById('wTwo');
+        var owThree=document.getElementById('wThree');
+        var ohOne=document.getElementById('hOne');
+        var ohTwo=document.getElementById('hTwo');
+        var ohThree=document.getElementById('hThree');
+        var oreset=document.getElementById('reset');
+        var osure=document.getElementById('sure');
+        obtn.onclick= function () {
+            oselect.style.display='block';
+            document.body.style.background='gray';
+        };
+        oCred.onclick= function () {
+            box.style.background='red';
+        };
+        Cyellow.onclick= function () {
+            box.style.background='yellow';
+        };
+        oCblue.onclick= function () {
+            box.style.background='blue';
+        };
+        owOne.onclick= function () {
+            box.style.width='200px';
+        };
+        owTwo.onclick= function () {
+            box.style.width='300px';
+        };
+        owThree.onclick= function () {
+            box.style.width='400px';
+        };
+        ohOne.onclick= function () {
+            box.style.height='200px';
+        };
+        ohTwo.onclick= function () {
+            box.style.height='300px';
+        };
+        ohThree.onclick= function () {
+            box.style.height='400px';
+        };
+        oreset.onclick= function () {
+            box.style.width='100px';
+            box.style.height='100px';
+            box.style.background='red';
+        };
+        osure.onclick= function () {
+            oselect.style.display='none';
+            document.body.style.background='white';
+        };
+    }
+</script>
+</body>
+</html>

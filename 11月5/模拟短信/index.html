@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .phone{width: 320px;height:500px;margin:0 auto;border: 1px solid #000;position: relative;}
+        .message_box{position: absolute;width:320px;bottom:0px;left:0px;height: 38px;line-height: 38px;border: 1px solid #ccc;}
+        .img_box{ float: left;width: 28px;height: 28px;border: 1px solid #ccc;border-radius: 10px;margin: 5px 0 0 5px;}
+        .inpt{float:left;padding: 0px 28px;    height: 35px;
+            line-height: 35px;}
+        .inpt input{width: 100%;height: 28px; line-height: 28px;}
+        span{float: left;font-size: 18px;cursor: pointer;
+            display: inline-block;}
+        #mess{width: 320px;height:460px;background-color:#f8f8f8;}
+        .bgOne{display: inline-block;
+            color: #fff;
+            max-width: 250px;
+            background: green;
+            padding: 7px 15px;
+            border-radius: 5px;
+        }
+        .bgtwo{display: inline-block;
+            color: #fff;
+            max-width: 250px;
+            background: coral;
+            padding: 7px 15px;
+            border-radius: 5px;}
+    </style>
+</head>
+<body>
+    <div class="phone" id="phone">
+        <div id="mess"></div>
+        <div class="message_box">
+            <div class="img_box" id="imgbox"><img id="img" src="img/1.png"> </div>
+            <div class="inpt"><input id="inpt"  type="text"></div>
+            <span id="send">发送</span>
+        </div>
+    </div>
+<script>
+    window.onload=function(){
+        var oImg=document.getElementById('img');
+        var oImgbox=document.getElementById('imgbox');
+        var oPhone=document.getElementById('phone');
+        var oInpt=document.getElementById('inpt');
+        var oSend=document.getElementById('send');
+        var oMess=document.getElementById('mess');
+        var oDiv1=document.createElement('div');
+        var oi=document.createElement('i');
+        var i=0;
+        //图片保存到数组中
+        var ArrUrl=['img/1.png','img/2.png'];
+        oImg.onclick=function(){
+            i++;
+            if(i==ArrUrl.length){
+                i=0;
+            }
+            oImg.src=ArrUrl[i];
+
+        };
+
+        //点击发送的时候
+        oSend.onclick= function () {
+//            oMess.innerHTML+=oImgbox.innerHTML+oInpt.value+'<br/>';
+            oDiv1.appendChild(oi);
+            oMess.appendChild(oDiv1);
+            oi.innerHTML=oInpt.value;
+            oDiv1.innerHTML+=oImgbox.innerHTML+'<br/>';
+            oInpt.value='';
+            //设置div1属性
+            oDiv1.style.float='right';
+            oi.setAttribute("class","bgOne");
+        }
+    }
+</script>
+</body>
+</html>

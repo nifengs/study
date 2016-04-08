@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+        //倒计时原理 未来的时间点减去(不变)-现在的时间点(在变)
+        var myNow=new Date();
+
+        var myNew=new Date(2015,10,27,21,56,0);//里面可以设置未来时间，第一种是数字形式 月份-1，第二种是字符串形式
+//        var myNew=new Date('November 27,2013 22:3:0')
+
+        // January、February、March、April、May、June、
+        // July、August、September、October、November、December
+
+        var t=Math.floor((myNew-myNow)/1000)//毫秒转化为秒 向下取整
+
+        //秒转化为天 时分
+        // 天：Math.floor(t/86400)
+        // 时：Math.floor(t%86400/3600)
+        // 分：Math.floor(t%86400%3600/60)
+        // 秒：t%60
+        var str = Math.floor(t/86400)+'天'+Math.floor(t%86400/3600)+'时'+Math.floor(t%86400%3600/60)+'分'+t%60+'秒';
+        alert(str)
+    </script>
+</body>
+</html>

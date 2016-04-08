@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.8.2.min.js"></script>
+</head>
+<body>
+<div class="divFrame">
+    <div class="divTitle">
+        <select id="Select1">
+            <option value="0.2">0.2</option>
+            <option value="0.4">0.4</option>
+            <option value="0.6">0.6</option>
+            <option value="0.8">0.8</option>
+            <option value="1.0" selected="selected">1.0</option>
+        </select>
+    </div>
+    <div class="divContent">
+        <img src="../Images/img06.jpg" alt="" title="风景图片" />
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#Select1').change(function () {
+            var seValue=$(this).val();
+            $('img').fadeTo(1000,seValue)
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+﻿<!--
+    分析: UL 里面放 背景图 (星星未选择的状态)  再放5个LI  将星星的位置框起来
+    鼠标移入星星的时候 就移入了LI 上面   ..
+    判断是移入的哪一个LI   就对应更换 UL的背景图
+    当点击LI的时候  背景图 固定
+    当输入移动到其他的 LI 时候 背景图还是可以更换 但是只要鼠标没有 点击LI
+    只要鼠标移开 UL 就会 切换到之前固定的背景图
+    0px
+    -21px
+    -42px
+    -63px
+    -84px
+    -104px
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>百度文库评分</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        #ul1{width: 120px; height:21px;
+        background: url("imgs/2.png") no-repeat 0 0 ;border: 1px solid red;}
+        ul li{list-style: none;float: left; width: 24px; height:21px;text-align: center;}
+        div{margin: 50px auto; width: 600px; height: 80px;}
+
+        #p1{width: 100px; height: 20px;background-image: url(imgs/1.png);background-position: 0 ;}
+        #span1{width: 60px; height: 30px; line-height: 30px; text-align: center;}
+        #p2{width: 250px; height: 40px; background-image: url(imgs/3.png);}
+        .left{float: left;}
+    </style>
+    <script>
+        window.onload=function(){
+            var arrBg_Pos_y=['-21px','-42px','-63px','-84px','-104px'];
+            var arrText=['差!','一般!','还不错!','很好!','超赞!!!']
+            //存起来
+            var pos_Y='';   //保存的是鼠标点击时候的Y 坐标位置
+            var sp_txt=''; //保存的评价
+            var oUl1=document.getElementById('ul1');
+            var aLi=document.getElementsByTagName('li');
+            var oSpan=document.getElementById('span1');
+            var oP2=document.getElementById('p2');
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].index=i;
+                aLi[i].onmouseover=function()
+                {
+                    oUl1.style.backgroundPosition='0'+arrBg_Pos_y[this.index];
+                    oSpan.innerHTML=arrText[this.index];
+                }
+                aLi[i].onclick=function(){
+                    pos_Y='0'+arrBg_Pos_y[this.index];
+                    sp_txt=arrText[this.index];
+                }
+                aLi[i].onmouseout=function(){
+                    oUl1.style.backgroundPosition=pos_Y;
+                    oSpan.innerHTML=sp_txt;
+                }
+            }
+
+            oUl1.onmouseover=function(){
+                oP2.style.display='none';
+            }
+            oUl1.onmouseout=function(){
+                if(!pos_Y){
+                    oP2.style.display='block';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <p id="p1" class="left"></p>
+        <ul id="ul1" class="left">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span id="span1" class="left"></span>
+        <p id="p2" class="left"></p>
+    </div>
+</body>
+</html>

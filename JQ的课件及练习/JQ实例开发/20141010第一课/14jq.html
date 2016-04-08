@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+ul{ display:none;}
+.box{ display:block;}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script>
+
+$(function(){
+
+	//$('span').prev().css('background','red');
+	
+	//$('p').prevAll().css('background','red');
+	
+	//$('p').siblings('h2').css('background','red');
+	
+	$('span').next('h2').css('background','red');
+	
+});
+
+</script>
+</head>
+
+<body>
+<div>div</div>
+<span>span</span>
+<p>p</p>
+<span>span</span>
+<h1>h1</h1>
+<h2>h2</h2>
+<h2>h2</h2>
+<h3>h3</h3>
+<em>em</em>
+</body>
+</html>

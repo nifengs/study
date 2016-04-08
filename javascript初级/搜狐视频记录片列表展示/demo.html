@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!--meta http-equiv="x-ua-compatible"content="ie=7"/--> 
+  <title>搜狐视频记录片列表展示</title>
+ </head>
+ <body>
+  
+ </body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!--meta http-equiv="x-ua-compatible"content="ie=7"/--> 
+  <title>demo</title>
+  <style type="text/css">
+     ul,li,p,h4{
+	    margin:0;padding:0;
+	 }
+	 ul,li{
+	    list-style:none;
+	 }
+     #box{
+	    width:266px;
+		border:1px solid #000;
+		background:#dee7e7;
+		font-family:'微软雅黑';
+		position:relative;
+	 }
+	 h4{
+		width:248px;
+		height:36px;
+		line-height:36px;
+		border-bottom:1px solid #94bdd6;
+		color:#103142;
+		padding-left:18px;
+		position:relative;
+		z-index:0;
+	 }
+	 #header{
+	    width:266px;
+		height:37px;
+		font-size:12px;
+		overflow:hidden;
+		position:absolute;
+		top:0;
+		left:0;
+	 }
+	 #header div{
+		position:absolute;
+		right:6px;
+		top:11px;
+		border-left:1px solid #94bdd6;
+	 }
+	  #header a{
+	     width:35px;
+		 height:24px;
+		 display:block;
+		 float:left;
+		 line-height:24px;
+		 text-align:center;
+		 text-decoration:none;
+		 color:#185273;
+		 border:1px solid #94bdd6;
+		 margin-left:-1px;
+	 }
+	  #header a:hover{
+	    background:#fff;
+		border-bottom:1px solid #fff;
+	 }
+
+	 li{
+	     font-size:12px;
+		 height:27px;
+		 line-height:27px;
+		 border-bottom:1px dashed #fff;
+		 position:relative;
+	 }
+	 li span{
+	     display:block;
+		 width:17px;
+		 height:13px;
+		 line-height:13px;
+		 font-weight:bold;
+		 color:#fff;
+		 text-align:center;
+		 background:#29739c;
+		 overflow:hidden;
+		 position:absolute;
+		 top:8px;
+		 left:13px;
+	 }
+	 li p{
+	     height:27px;
+	     padding-top:2px;
+		 padding-left:42px;
+		 overflow:hidden;
+	 }
+     #header .hover{
+	    background:#fff;
+		border-bottom:1px solid #fff;
+	 }
+	 .active{
+	     background:#fff;
+		 height:80px;
+	 }
+
+	 /*******************JS-CSS***********************/
+	 img{
+	    width:80px;
+		height:60px;
+		padding:4px;
+		border:1px solid #94bdd6;
+		position:absolute;
+		top:7px;
+		left:40px;
+	 }
+
+	 #list div{
+		width:107px; /*--122px--*/
+		height:29px; /*--66px--*/
+		position:absolute;
+		top:7px;
+		left:140px;
+		overflow:hidden;
+		padding:7px 7px 30px 3px;
+		font-size:12px;
+		line-height:12px;
+	 }
+	 #list div p{
+		 padding:0 12px 0 0;
+		 width:96px;  /*--108px--*/
+		 height:30px;
+		 line-height:16px;
+		 color:#185273;
+		 float:left;
+		 overflow:hidden;
+		 margin-bottom:8px;
+	 }
+	 #list div a{
+	     display:block;
+		 width:31px;  /*--41px--*/
+		 height:21px;
+		 text-align:center;
+		 line-height:21px;
+		 text-decoration:none;
+		 background:url('imgs/abg.gif') no-repeat;
+		 color:#fff;
+		 padding-left:10px;
+		 float:right;
+	 }
+
+
+
+  </style>
+  <script type='text/javascript'>
+      window.onload = function(){
+	      var aLi = document.getElementsByTagName('li');
+		  var str = '<span></span><img /><div><p></p><a href="javascript:;">播放</a></div>';
+
+		  for(var i=0;i<aLi.length;i++){
+		      aLi[i].index = i;
+			  aLi[i].oldHtml = aLi[i].innerHTML;
+			  aLi[i].onmouseover = change;            
+		  }
+
+		  function change(){  
+				  for(var i=0;i<aLi.length;i++){
+				      aLi[i].className = '';
+				      aLi[i].innerHTML = aLi[i].oldHtml;
+				  }
+
+				  this.className = 'active';
+
+				  var oP1 = this.getElementsByTagName('p')[0];
+				  var pTxt = oP1.innerHTML;
+				  this.innerHTML = str;
+				  var oImg = this.getElementsByTagName('img')[0];
+				  var oSpan = this.getElementsByTagName('span')[0];
+				  oSpan.innerHTML = this.index+1;
+				  oImg.src = 'imgs/'+(this.index+1)+'.gif'
+				  var oP2 = this.getElementsByTagName('p')[0];
+				  oP2.innerHTML = pTxt;
+		 }
+
+	  }
+  </script>
+ </head>
+ <body>
+    <div id="box">
+	    <h4>观看排行榜</h4>
+	    <div id="header">
+		    <div><a class='hover' href="javascript:;">每日</a><a a href="javascript:;">每周</a><a a href="javascript:;">全部</a></div>
+		</div>
+		<ul id="list">
+		   <li>
+		      <span>1</span><p>解密：关于地球与人类的一千零一问</p>
+		   </li>
+		   <li>
+		      <span>2</span><p>经典传奇：探索全世界重大历史事件</p>
+		   </li>
+		   <li>
+		      <span>3</span><p>大电影：皮克侦探</p>
+		   </li>
+		</ul>
+	</div>
+ </body>
+</html>

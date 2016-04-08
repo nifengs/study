@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Animal(){
+        this.species = "动物";
+    }
+    function Cat(name,color){
+        this.name = name;
+        this.color = color;
+    }
+    Cat.prototype=new Animal();
+
+    Cat.prototype.constructor=Cat;
+    alert(Cat.prototype.constructor == Animal)
+    var cat1=new Cat('二狗','黄色');
+    alert(cat1.species);
+</script>
+</body>
+</html>

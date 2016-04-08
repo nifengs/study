@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<script src="jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+<div id="div1" class="box">aaaaa</div>
+<script>
+
+/*var oDiv = document.getElementById('div1');
+
+oDiv.onclick = function(){
+	alert( oDiv.innerHTML );
+};*/
+
+var oDiv = $('#div1');
+
+oDiv.click(function(){
+	
+	//this  ?  原生还是JQ呢？
+	
+	alert( $(this).html() );
+	
+	//alert(  oDiv.html()  );  //纯JQ写法
+	
+	//alert( document.getElementById('div1').innerHTML );  //纯JS写法
+	
+	//alert( oDiv.innerHTML );   //错误的
+	//alert( document.getElementById('div1').html() );  //错误的
+	
+	
+});
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+<style>
+#div1 div{ width:200px; height:200px; border:1px #000 solid; display:none;}
+.active{ background:red;}
+</style>
+<script src="jquery-1.11.1.js"></script>
+<script>
+
+$(function(){
+	
+	//each()  ->  for
+	
+	//$('li').html('hello');
+	
+	/*for(){
+		aLi[i].style.background = 'red';
+		break;
+	}*/
+	
+	$('li').each(function(i,elem){  
+		//alert(i);
+		//elem : 原生的元素
+		//elem.style.background = 'red';
+		//$(elem).css('background','red');
+		
+		//$(elem).html(i);
+		
+		//this  == elem
+		
+		$(this).html(i);
+		
+		if(i == 2){
+			return false;
+		}
+		
+	});
+	
+});
+
+</script>
+</head>
+
+<body>
+<ul>
+	<li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

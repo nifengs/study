@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    *{
+        margin: 0;padding: 0;
+    }
+    li{
+        float: left;
+        text-decoration: none;
+        list-style: none;
+        width: 10px;
+    }
+ body{
+     margin: 100px 300px;
+ }
+</style>
+<body>
+
+<script type="text/javascript" >
+    function step(){
+        for(i=1;i<=9;i++){
+            for(j=1;j<=i;j++){
+                document.write(i+"x"+j+"="+i*j +" ");
+            }
+            document.write("<br/>")
+        }
+    }
+    step();
+</script>
+</body>
+</html>

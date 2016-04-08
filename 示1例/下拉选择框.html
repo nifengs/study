@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.js"></script>
+    <style>
+        *{
+            margin: 0;padding: 0;}
+        body{
+            background: #09c;
+            color: #333;
+        }
+        .content{
+            padding-left: 5%;
+            margin-top: 20px;
+        }
+        .content .select{
+            width: 300px;
+            height: 40px;
+            margin: 0 auto;
+            font-family: "微软雅黑";
+            font-size: 16px;
+            background-color: #fff;
+            position: relative;
+        }
+        .content .select:after{
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            top:11px;
+            right: 12px;
+            transform:rotate(-45deg) ;
+        }
+        .content .select p{
+            padding: 0 15px;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .content .select ul{
+            list-style-type: none;
+            background-color: #fff;
+            width: 100%;
+            overflow-y: auto;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            max-height: 0;
+        }
+        .content .select ul li{
+            padding:  0 15px;
+            line-height: 40px;
+            cursor: pointer;
+        }
+        .content .select ul li:hover{
+            background: #e0e0e0;
+        }
+        .content .select ul li.selected{
+            background-color: #39f;
+            color: #fff;
+        }
+        .content .select.open ul{
+            max-height: 250px;
+        }
+        .content .select.open:after{
+            transform:rotate(-225deg) ;
+            top:18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="select open">
+            <p>所有选项</p>
+            <ul>
+                <li class="selected" data-value="所有选项">所有选项</li>
+                <li data-value="html">html</li>
+                <li data-value="css">css</li>
+                <li data-value="javascript">javascript</li>
+                <li data-value="jQuery">jQuery</li>
+            </ul>
+        </div>
+    </div>
+<script>
+    $(function () {
+        $('.select > p').on('click',function(){
+            $('.select').toggleClass('open');
+        })
+        $('.select ul li').on('click', function () {
+            var _this=$(this);
+            $('.select >p').text(_this.attr('data-value'));
+            _this.addClass('selected').siblings().removeClass('selected');
+            $('.select').removeClass('open');
+        })
+    })
+</script>
+</body>
+</html>

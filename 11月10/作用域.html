@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    1 var a = 1;
+    2function fn1(){
+    3        alert(a);                        // undefined
+    4        var a = 2;
+    5   }
+    6 fn1();
+    7 alert(a);                            // 1
+//    先预解析，从上到下找带有var function的关键参数
+//    先找一遍预解析：
+//    1、找到第一行a=...并没有赋值,且说未定义undefined
+//    2、找到函数
+//    function fn1(){
+//        alert(a);
+//        var a = 2;
+//    }
+//     3、找完所有的var function 之后开始解读代码：
+//     4、从头开始读到var a=1表达式;并将找到的a=1交给与解析的a
+//    4、遇到函数调用、在fn1函数内又开始预解析、找带有var function的关键参数
+//        找到var a=2;解析成a=...局部内的与解析结束了
+//     alert（a）开始找a，之前已经找到a=...未定义undefined 函数内部的之后在你逐句解读代码
+//     原来的a=1变成了a=2；（垃圾回收）
+//        这次找到的a=...替换原来的a...因此fn1()函数内alert(a)为undefined
+//    5、第七行的alert(a)逐句解读代码，找到a=1因此弹出a
+</script>
+</body>
+</html>

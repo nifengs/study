@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>查找替换3</title>
+    <style type="text/css">
+        p,dl,dt,dd,ul,li,input{margin:0;padding:0;}
+        li{list-style:none;}
+        a{text-decoration:none;}
+        #box{border:1px solid #ccc;width:634px;padding:20px;background:#efefe7;position:relative;    margin: 30px auto;}
+        p{font-size:16px;line-height:30px;width:460px;height:210px;background:#fff;padding:20px;font-family:"微软雅黑";}
+        dl{width:80px;height:120px;position:absolute;top:20px;right:60px;}
+        dt,dl{font-size:16px;color:#fff;text-align:center;font-family:"微软雅黑";}
+        dt{height:38px;background:#808080;line-height:38px;}
+        dd{height:40px;background:#c0c0c0;line-height:40px;margin-top:1px;display:none;}
+        #toolBox{width:460px;height:106px;border:10px solid #e71063;margin-top:10px;padding:20px 20px 0;position:relative;display:none;background:#e7e7b5;}
+        ul{border-bottom:2px solid #e73100;zoom:1;}
+        .clear:after{content:"";display:block;clear:both;}
+        li{width:78px;height:32px;text-align:center;line-height:32px;font-size:16px;color:#000;float:left;font-family:"微软雅黑"}
+        .active{background:#e73100;color:#fff;}
+        #toolBox .look, #toolBox .replace{border:none;margin-top:22px;position:absolute;}
+        .replace{display:none;}
+        a, a:visited{color:#000;font-family:Arial;position:absolute;top:8px;right:8px;}
+        input{width:180px;height:26px;border:1px solid #c0c0c0;margin-right:12px;line-height:26px;}
+        p span{background:#ff0;}
+        .on{background: darkred}
+    </style>
+</head>
+<body>
+<div id="box">
+    <p>秒味课堂是一支充满温馨并且极富人情味的IT团队；2010~2011年，秒味深度关注WEB前端开发领域，为此精心研发出一套灵活而充满趣味的JavaScript课程。2011~2013年，秒味精准研发出最新HTML5\CSS3课程，并推出远程培训课堂方案，尝试将线下优良的培训模式移植到远程网络培训中，希望尽最大努力，将一种快乐愉悦的授课体验、结合HTML\CSS\JS知识点，精准传递给秒味课堂的每一位学员。</p>
+    <dl>
+        <dt>展开</dt>
+        <dd>查找</dd>
+        <dd>替换</dd>
+    </dl>
+    <div id="toolBox">
+        <ul class="clear">
+            <li class="active">查找</li>
+            <li>替换</li>
+        </ul>
+        <a href="#">X</a>
+        <div class="look">
+            <input type="text" />
+            <button id="lookBtn">查找</button>
+        </div>
+        <div class="replace">
+            <input type="text" />
+            <input type="text" />
+            <button id="replaceBtn">替换</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function(){
+        var oDt = document.getElementsByTagName('dt')[0];
+        var oDd = document.getElementsByTagName('dd');
+        var oToolBox = document.getElementById('toolBox');
+        var aLi = document.getElementsByTagName('li');
+        var aDiv = oToolBox.getElementsByTagName('div');
+        var oLookBtn = document.getElementById('lookBtn');
+        var oReplaceBtn = document.getElementById('replaceBtn');
+        var aInp = oToolBox.getElementsByTagName('input');
+        var oP = document.getElementsByTagName('p')[0];
+        var oA = document.getElementsByTagName('a')[0];
+        var str = '';
+
+        //展开模块功能
+        oDt.onclick = function(){
+            for(var i=0;i<oDd.length;i++){
+                oDd[i].style.display = 'block';
+            }
+            for(var i=0;i<oDd.length;i++){
+                oDd[i].index = i;
+                oDd[i].onclick = function(){
+                    oToolBox.style.display = 'block';
+                    var _this = this;
+                    showTab(_this);
+                }
+            }
+
+            //ToolBox功能模块
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].index = i;
+                aLi[i].onclick = function(){
+                    var _this = this;
+                    showTab(_this);
+                }
+            }
+
+            function showTab(that){
+                for(var i=0;i<oDd.length;i++){
+                    oDd[i].style.background = "#c0c0c0";
+                    aDiv[i].style.display = "none";
+                    aLi[i].style.background = '#e7e7b5';
+                    aLi[i].style.color = '#000';
+                    aDiv[i].style.display = "none";
+                }
+                oDd[that.index].style.background = "#e73100";
+                aDiv[that.index].style.display = 'block';
+                aLi[that.index].style.background = '#e73100';
+                aLi[that.index].style.color = '#fff';
+                aDiv[that.index].style.display = 'block';
+                for(var i=0;i<aInp.length;i++){
+                    aInp[i].value = '';
+                }
+            }
+
+            //OA关闭搜索栏
+            oA.onclick = function(){
+                oToolBox.style.display = 'none';
+
+                for(var i=0;i<oDd.length;i++){
+                    oDd[i].style.display = 'none';
+                }
+            }
+
+
+            //查找功能
+            oLookBtn.onOff = true;
+            oLookBtn.onclick = function(){
+                oReplaceBtn.onOff = true;
+
+                if(this.onOff){
+                    str = oP.innerHTML;
+                    this.onOff = false;
+                }
+                var oLstr = str;
+
+                if(aInp[0].value.search(/^\s*$/)){
+                    if(oP.innerHTML.indexOf(aInp[0].value) == -1){
+                        alert('没有匹配的字符串');
+                    }else{
+                        oP.innerHTML = oLstr.split(aInp[0].value).join('<span>'+aInp[0].value+'</span>');
+                    }
+
+                }else{
+                    alert('请输入要查找的字符串!');
+                }
+            }
+
+            //替换功能
+            oReplaceBtn.onOff = true;
+            oReplaceBtn.onclick = function(){
+
+                oLookBtn.onOff = true;
+                if(this.onOff){
+                    var str1 = (str === '')? oP.innerHTML : str;
+                    this.onOff = false;
+                }else{
+                    str1 = oP.innerHTML;
+                }
+
+                if(aInp[1].value.search(/^\s*$/) ){
+                    if(oP.innerHTML.indexOf(aInp[1].value) == -1){
+
+                        alert('没有找的要替换字符串');
+
+                    }else if((oP.innerHTML.indexOf(aInp[1].value) != -1 ) && (aInp[2].value == '')){
+
+                        oP.innerHTML = str1.split(aInp[1].value).join('<span>'+aInp[1].value+'</span>');
+
+                        var conf = confirm('您确定要删除\【'+aInp[1].value+'\】吗？');
+                        if(conf){
+                            oP.innerHTML = str1.split(aInp[1].value).join('');
+                            aInp[1].value = '';
+                        }else{
+                            oP.innerHTML = str1;
+                        }
+
+                    }else{
+
+                        oP.innerHTML = str1.split(aInp[1].value).join(aInp[2].value);
+
+                    }
+
+                }else{
+                    return false;
+                }
+
+            }
+
+
+        };
+
+
+
+
+    }
+
+</script>
+</body>
+</html>
