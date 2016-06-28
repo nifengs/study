@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="react.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var arr = [
+        <h1>尼玛的</h1>,
+        <h2>他妈的</h2>,
+    ];
+    ReactDOM.render(
+            <div>{arr}</div>,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>

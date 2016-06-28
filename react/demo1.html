@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="react-with-addons.js"></script>
+    <script src="react-dom.js"></script>
+    <script src="browser.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var Item=React.createClass({
+       render:function () {
+          return (<li>{this.props.item}</li>)
+       }
+    });
+    var List = React.createClass({
+        render: function () {
+            return (
+                    <ul>
+                        {
+                            this.props.listArr.map(function (item, index) {
+                                return <Item key={index} item={item}/>
+                            })
+                        }
+                    </ul>
+            )
+        }
+    });
+    var First = React.createClass({
+        mixins: [React.addons.LinkedStateMixin],
+        getInitialState: function () {
+            return {
+                mes: this.props.value,
+                listArr:this.props.listArr
+            }
+        },
+        render: function () {
+            return (
+                    <div>
+                        <h1>{this.props.title}</h1>
+                        <input type="text" ref='text_input' valueLink={this.linkState('mes')}/>
+                        <input type="button" onClick={this.addItemHandle} value={this.props.sendName}/>
+                        <p>{this.state.mes}</p>
+                        <List listArr={this.state.listArr}/>
+                    </div>
+            )
+        },
+        addItemHandle:function () {
+            console.log(this.refs.text_input.value);
+            var value=this.refs.text_input.value;
+            var newArr = this.state.listArr.concat([value])
+            this.setState({
+                listArr:newArr
+            })
+        }
+        /* handleChange:function (ev) {
+         this.setState({mes:ev.target.value})
+         },*/
+
+    });
+    /*var title = '欢迎您来到这里学习';
+     var send='提交';*/
+    var obj = {
+        title: '欢迎你来到这里',
+        sendName: '提交',
+        value: '请输入留言',
+        listArr: [1, 2, 3]
+    }
+    ReactDOM.render(
+            <First {...obj}/>,
+            document.getElementById('example'),
+            function () {
+                console.log('页面渲染完成了');
+            }
+    );
+</script>
+</body>
+</html>
